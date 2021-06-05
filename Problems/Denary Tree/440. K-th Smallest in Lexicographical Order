@@ -1,0 +1,38 @@
+/*
+Runtime: 4 ms, faster than 100.00% of C++ online submissions for K-th Smallest in Lexicographical Order.
+Memory Usage: 6 MB, less than 30.71% of C++ online submissions for K-th Smallest in Lexicographical Order.
+You are here!
+Your memory usage beats 30.71 % of cpp submissions.
+*/
+
+class Solution {
+public:
+    int findKthNumber(int n, int k) {
+        
+        int index = 1;
+        k--;
+        while(k>0){
+            int countnum = count(index, n);
+            if(countnum<=k){
+                k-=countnum;
+                index++;
+            }else{
+                index*=10;
+                k--;
+            }
+		}
+        return (int)index;
+    }
+    
+        int count(int index,int n){ 
+            long count = 0;
+            long left = index;
+            long right = index+1;
+            while(left <= n){ 
+                count += (std::min)((int)right,(int)n+1) - left;
+                left*=10;
+                right*=10;
+            }
+            return (int)count;
+        }
+    };
