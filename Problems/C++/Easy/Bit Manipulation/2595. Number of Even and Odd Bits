@@ -1,0 +1,19 @@
+/*
+Runtime 0 ms Beats 100%
+Memory 7.3 MB Beats 59.95%
+*/
+class Solution {
+public:
+    vector<int> evenOddBit(int n) {
+        vector<int> ans = {0,0};
+        int i = 0;
+        while(n>0) {
+            if(n&1==1) {
+                ans[i%2]++;
+            }
+            n>>=1;
+            i++;
+        }
+        return ans;
+    }
+};
