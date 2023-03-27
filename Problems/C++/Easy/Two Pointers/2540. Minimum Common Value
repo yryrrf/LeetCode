@@ -1,0 +1,20 @@
+/*
+Runtime 97 ms Beats 81.64%
+Memory 50.7 MB Beats 58.21%
+*/
+class Solution {
+public:
+    int getCommon(vector<int>& nums1, vector<int>& nums2) {
+        int p1 = 0;
+        int p2 = 0;
+        while(p1<nums1.size() && p2<nums2.size() && nums1[p1]!=nums2[p2]) {
+            if(nums1[p1]<nums2[p2]) {
+                p1++;
+            }else{
+                p2++;
+            }
+        }
+        if(p1>=nums1.size() || p2>=nums2.size()) return -1;
+        return nums1[p1]==nums2[p2]?nums1[p1]:-1;
+    }
+};
